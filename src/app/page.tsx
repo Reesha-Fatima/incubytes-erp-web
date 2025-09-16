@@ -1,5 +1,5 @@
 'use client';
-import { Header, HeroBanner, ModuleListing, ModuleTab } from '@molecules';
+import { Header, HeroBanner, ModuleListing, ModuleTab, PricingSection } from '@molecules';
 import React from 'react';
 export default function Home() {
   return (
