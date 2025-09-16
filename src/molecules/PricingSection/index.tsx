@@ -120,7 +120,7 @@ export default function PricingSection() {
                 withBorder={false}
                 radius="lg"
                 shadow={plan.featured ? "md" : "sm"}
-                className={`${styles.planCard} ${styles[plan.bgClass as keyof typeof styles] ?? ""} ${plan.featured ? styles.planCardFeatured : ""}`}
+                className={`${styles.planCard} ${plan.featured ? styles.planCardFeatured : ""}`}
               >
                 {plan.featured && (
                   <Group gap={6} className={styles.featuredBadge}>
