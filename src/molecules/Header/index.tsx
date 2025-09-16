@@ -27,7 +27,7 @@ export default function Header() {
             <Flex gap={20} justify={'center'}>
               {nav.map((menu, i) => {
                 return (
-                  <div>
+                  <div key={menu.slug || `${menu.name}-${i}`}>
                     <Link href={menu.slug} className="nodecoration">
                       <Text fz={'16px'} lts={1} className="black">
                         {menu.name}
