@@ -25,46 +25,52 @@ type BillingCycle = "monthly" | "yearly";
 const plans = [
   {
     key: "starter",
-    name: "Starter",
-    tagline: "For individuals and trials",
+    name: "Free",
+    tagline: "Free plan for all users.",
     monthly: 0,
     yearly: 0,
     cta: "Get Started",
     featured: false,
+    bgClass: "bgSoft1",
     features: [
-      "1 user",
-      "Basic modules",
-      "Community support",
+      "2 Workspaces",
+      "10 collaborators",
+      "Unlimited data",
+      "Unified Analytics",
     ],
   },
   {
     key: "pro",
     name: "Pro",
-    tagline: "Best for growing teams",
-    monthly: 19,
-    yearly: 190,
-    cta: "Upgrade to Pro",
+    tagline: "Ideal for small businesses.",
+    monthly: 15,
+    yearly: 150,
+    cta: "Get Started",
     featured: true,
+    bgClass: "bgSoft2",
     features: [
-      "Up to 10 users",
-      "All core modules",
-      "Priority support",
-      "Advanced reports",
+      "Unlimited workspaces",
+      "Unlimited collaboration",
+      "15 GB data storage",
+      "Unified Analytics",
+      "Mobile app access",
     ],
   },
   {
     key: "enterprise",
-    name: "Enterprise",
-    tagline: "Custom needs & scale",
-    monthly: 49,
-    yearly: 490,
-    cta: "Contact Sales",
+    name: "Business",
+    tagline: "Works best for enterprise companies.",
+    monthly: 25,
+    yearly: 250,
+    cta: "Get Started",
     featured: false,
+    bgClass: "bgSoft3",
     features: [
-      "Unlimited users",
-      "Custom modules",
-      "Dedicated manager",
-      "SLA & SSO",
+      "Unlimited workspaces",
+      "Unlimited collaboration",
+      "15 GB data storage",
+      "Unified Analytics",
+      "Mobile app access",
     ],
   },
 ] as const;
@@ -111,12 +117,10 @@ export default function PricingSection() {
           {plans.map((plan) => (
             <Grid.Col key={plan.key} span={{ base: 12, sm: 6, md: 4 }}>
               <Card
-                withBorder
+                withBorder={false}
                 radius="lg"
                 shadow={plan.featured ? "md" : "sm"}
-                className={
-                  plan.featured ? `${styles.planCard} ${styles.planCardFeatured}` : styles.planCard
-                }
+                className={`${styles.planCard} ${styles[plan.bgClass as keyof typeof styles] ?? ""} ${plan.featured ? styles.planCardFeatured : ""}`}
               >
                 {plan.featured && (
                   <Group gap={6} className={styles.featuredBadge}>
@@ -135,14 +139,14 @@ export default function PricingSection() {
                 <Flex align="baseline" gap={6} mt={14} className={styles.priceRow}>
                   <Text className={styles.currency}>$</Text>
                   <Text className={styles.price}>{renderPrice(plan)}</Text>
-                  <Text className={styles.cycle}>/{billing === "monthly" ? "mo" : "yr"}</Text>
+                  <Text className={styles.cycle}>/{billing === "monthly" ? "month" : "year"}</Text>
                 </Flex>
 
                 <Button
                   fullWidth
                   mt={16}
                   size="md"
-                  variant={plan.featured ? "filled" : "default"}
+                  variant="default"
                   className={styles.ctaButton}
                 >
                   {plan.cta}
