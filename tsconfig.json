@@ -1,0 +1,88 @@
+{
+  "compilerOptions": {
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@importers": [
+        "./src/_importers"
+      ],
+      "@assets": [
+        "./src/_assets"
+      ],
+      "@forms": [
+        "./src/_forms"
+      ],
+      "@helper": [
+        "./src/_helper"
+      ],
+      "@hooks": [
+        "./src/_hooks"
+      ],
+      "@query": [
+        "./src/_query"
+      ],
+      "@route": [
+        "./src/_route"
+      ],
+      "@services": [
+        "./src/_services"
+      ],
+      "@storage": [
+        "./src/_storage"
+      ],
+      "@ts": [
+        "./src/_ts"
+      ],
+      "@ui": [
+        "./src/_ui"
+      ],
+      "@validations": [
+        "./src/_validations"
+      ],
+      "@atoms": [
+        "./src/atoms"
+      ],
+      "@molecules": [
+        "./src/molecules"
+      ],
+      "@organisms": [
+        "./src/organisms"
+      ],
+      "@settings": [
+        "./src/_settings"
+      ],
+      "*": [
+        "./src/*"
+      ]
+    },
+    "target": "ES2017"
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

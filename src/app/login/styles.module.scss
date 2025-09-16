@@ -1,0 +1,29 @@
+.wrapper {
+  .loginCol,
+  .loginRightCol {
+    height: 101vh;
+    padding: 50px;
+  }
+
+  .loginRightCol {
+    display: flex;
+    align-items: center;
+  }
+
+  .formWrap {
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .wrapper {
+    width: 100%;
+    overflow: hidden;
+    .loginLeftCol {
+      display: none;
+    }
+    .loginRightCol {
+      height: 100vh;
+      padding: 30px;
+    }
+  }
+}

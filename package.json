@@ -1,0 +1,47 @@
+{
+  "name": "next-code-base",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@mantine/carousel": "^8.3.1",
+    "@mantine/charts": "^8.2.2",
+    "@mantine/code-highlight": "^8.2.2",
+    "@mantine/core": "^8.2.2",
+    "@mantine/dates": "^8.2.2",
+    "@mantine/dropzone": "^8.2.2",
+    "@mantine/form": "^8.2.2",
+    "@mantine/hooks": "^8.2.2",
+    "@tabler/icons-react": "^3.34.0",
+    "@tanstack/react-query": "^5.80.6",
+    "apisauce": "^3.1.1",
+    "classnames": "^2.5.1",
+    "dayjs": "^1.11.13",
+    "embla-carousel": "^8.6.0",
+    "embla-carousel-react": "^8.6.0",
+    "formik": "^2.4.6",
+    "lottie-react": "^2.4.1",
+    "moment": "^2.30.1",
+    "next": "15.3.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-slick": "^0.31.0",
+    "sass": "^1.90.0",
+    "slick-carousel": "^1.8.1",
+    "socket.io-client": "^4.8.1",
+    "yup": "^1.6.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@types/react-slick": "^0.23.13",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
