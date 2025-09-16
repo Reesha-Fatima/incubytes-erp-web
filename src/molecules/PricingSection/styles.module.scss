@@ -1,0 +1,114 @@
+.pricingSection {
+  width: 100%;
+  padding: var(--section-padding-lg) 0;
+  background: var(--primary_lightest);
+}
+
+.headerWrap {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.sectionBadge {
+  background: var(--secondary);
+  color: var(--white);
+  border: none;
+}
+
+.sectionTitle {
+  font-size: 34px;
+  line-height: 1.15;
+  color: var(--body);
+}
+
+.sectionSubtitle {
+  color: var(--body_light);
+}
+
+.billingToggle {
+  background: var(--white);
+  border: 1px solid var(--primary_border);
+}
+
+.planCard {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 8px;
+  border-color: var(--primary_border);
+}
+
+.planCardFeatured {
+  border: 2px solid var(--primary);
+  box-shadow: 0 10px 30px rgba(88, 18, 203, 0.12);
+  background: #fff;
+}
+
+.featuredBadge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: var(--secondary);
+  color: var(--white);
+  padding: 6px 10px;
+  border-radius: var(--radius_sm);
+}
+
+.planName {
+  color: var(--body);
+  font-size: 18px;
+}
+
+.planTagline {
+  color: var(--body_light);
+  font-size: 14px;
+}
+
+.priceRow {
+  color: var(--body);
+}
+
+.currency {
+  font-size: 18px;
+  color: var(--body_light);
+}
+
+.price {
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.cycle {
+  font-size: 14px;
+  color: var(--body_light);
+}
+
+.ctaButton {
+  border-radius: var(--radius_lg);
+}
+
+.featureList {
+  margin-top: 10px;
+}
+
+.checkIcon {
+  background: var(--primary_lightest);
+  color: var(--primary);
+}
+
+.featureItem {
+  color: var(--body);
+}
+
+.noteText {
+  color: var(--body_light);
+}
+
+@media only screen and (max-width: 767px) {
+  .sectionTitle {
+    font-size: 28px;
+  }
+}
