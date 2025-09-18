@@ -2,7 +2,8 @@
 
 import React from 'react';
 import Slider from 'react-slick';
-import { Box, Card, Container, Group, Stack, Text, Title, Avatar, Rating } from '@mantine/core';
+import { Box, Card, Container, Group, Stack, Text, Title, Avatar, Rating, Badge } from '@mantine/core';
+import styles from './styles.module.scss';
 
 const testimonials = [
   {
