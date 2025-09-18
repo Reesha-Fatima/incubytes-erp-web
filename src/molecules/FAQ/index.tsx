@@ -1,7 +1,8 @@
 "use client";
 
 import React from 'react';
-import { Accordion, Box, Container, Stack, Text, Title } from '@mantine/core';
+import { Accordion, Box, Card, Container, Stack, Text, Title, Badge } from '@mantine/core';
+import styles from './styles.module.scss';
 
 const faqs = [
   {
@@ -24,23 +25,28 @@ const faqs = [
 
 export default function FAQ() {
   return (
-    <Box component="section" className="section-padding">
+    <Box component="section" className={`section-padding ${styles.faqSection}`}>
       <Container size="md">
         <Stack gap={8} align="center" ta="center" mb={20}>
+          <Badge size="lg" radius="sm">FAQ</Badge>
           <Title order={2} fw={700}>Frequently asked questions</Title>
           <Text c="var(--body_light)">Everything you need to know to get started</Text>
         </Stack>
 
-        <Accordion radius="md" variant="default">
+        <div className={styles.faqWrap}>
+          <Card withBorder radius="lg" className={styles.card}>
+            <Accordion radius="md" variant="default">
           {faqs.map((f, i) => (
             <Accordion.Item key={i} value={`faq-${i}`}>
-              <Accordion.Control>{f.q}</Accordion.Control>
-              <Accordion.Panel>
+              <Accordion.Control className={styles.control}>{f.q}</Accordion.Control>
+              <Accordion.Panel className={styles.panel}>
                 <Text>{f.a}</Text>
               </Accordion.Panel>
             </Accordion.Item>
           ))}
-        </Accordion>
+            </Accordion>
+          </Card>
+        </div>
       </Container>
     </Box>
   );
