@@ -69,7 +69,7 @@ export default function Testimonials() {
                     <Rating readOnly defaultValue={t.rating} />
                     <Text size="lg">“{t.quote}”</Text>
                     <Group>
-                      <Avatar radius="xl" color="var(--primary)" variant="filled">
+                      <Avatar radius="xl" variant="filled" className="bg_primary white">
                         {t.initials}
                       </Avatar>
                       <Stack gap={0}>
