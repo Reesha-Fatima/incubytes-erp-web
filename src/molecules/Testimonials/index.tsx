@@ -73,11 +73,13 @@ export default function Testimonials() {
             {testimonials.map((t, i) => (
               <div key={`${t.name}-${i}`} className={`${styles.slide} ${styles.testimonialItem}`}>
                 <div className={styles.cardOuter}>
-                  <div className={styles.avatarBadge}>
-                    <Avatar radius="xl" variant="filled" className="bg_primary white" size="lg">{t.initials}</Avatar>
-                  </div>
                   <Card radius="lg" shadow="sm" p={28} className={`${styles.card} bg_white`}>
-                    <Stack gap={10} align="center">
+                    <Stack gap={12} align="center">
+                      <div className={styles.avatarInline}>
+                        <span className={styles.avatarRing}>
+                          <Avatar radius="xl" variant="filled" className="bg_primary white" size="lg">{t.initials}</Avatar>
+                        </span>
+                      </div>
                       <Rating readOnly defaultValue={t.rating} className={styles.rating} />
                       <Text fw={700} ta="center" className={styles.name}>{t.name}</Text>
                       <Text size="sm" ta="center" className={styles.role}>{t.role}</Text>
