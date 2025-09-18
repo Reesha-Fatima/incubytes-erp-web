@@ -1,111 +1,96 @@
-import { Box, Card, Container, Grid, Group, Stack, Text, ThemeIcon, Title } from '@mantine/core';
-import React from 'react';
-import {
-  IconLayoutKanban,
-  IconChartLine,
-  IconSpeakerphone,
-  IconUsersGroup,
-  IconChartPie,
-  IconFileInvoice,
-  IconBuildingStore,
-  IconShoppingCart,
-  IconCoin,
-  IconTicket,
-  IconFile,
-} from '@tabler/icons-react';
+'use client';
 
-const modules = [
-  {
-    icon: IconLayoutKanban,
-    name: 'Project Management',
-    desc: 'Plan, track, and deliver projects with boards, sprints, and timelines.',
-  },
-  {
-    icon: IconChartLine,
-    name: 'Leads CRM',
-    desc: 'Capture, qualify, and nurture leads with pipeline automation.',
-  },
-  {
-    icon: IconSpeakerphone,
-    name: 'Campaigns',
-    desc: 'Run multi-channel campaigns with performance analytics.',
-  },
-  {
-    icon: IconUsersGroup,
-    name: 'HRMS',
-    desc: 'Manage employees, attendance, payroll, and reviews in one place.',
-  },
-  {
-    icon: IconChartPie,
-    name: 'Accounts',
-    desc: 'Monitor cash flow, P&L, and balance sheets with ease.',
-  },
-  {
-    icon: IconFileInvoice,
-    name: 'Invoices',
-    desc: 'Create, send, and reconcile invoices with reminders.',
-  },
-  {
-    icon: IconBuildingStore,
-    name: 'Stores',
-    desc: 'Track stock levels and transfers across locations.',
-  },
-  {
-    icon: IconShoppingCart,
-    name: 'Orders',
-    desc: 'Process orders with fulfillment and delivery status.',
-  },
-  {
-    icon: IconCoin,
-    name: 'Payrolls',
-    desc: 'Automate payroll with compliance-ready reports.',
-  },
-  {
-    icon: IconTicket,
-    name: 'Tickets',
-    desc: 'Resolve customer issues with SLAs and automations.',
-  },
-  {
-    icon: IconFile,
-    name: 'Files',
-    desc: 'Organize and collaborate on documents securely.',
-  },
-];
+import { modules } from '@helper';
+import { Carousel } from '@mantine/carousel';
+import {
+  Box,
+  Button,
+  Card,
+  List,
+  Stack,
+  Text,
+  ThemeIcon,
+  Title,
+} from '@mantine/core';
+import { IconPointFilled } from '@tabler/icons-react';
+import styles from './styles.module.scss';
 
 export default function ModuleListing() {
   return (
-    <Box component="section" className="section-padding">
-      <Container size="lg">
-        <Stack gap={8} align="center" ta="center" mb={20}>
-          <Group gap={8}>
-            <Title order={2} fw={700}>Explore Modules</Title>
-          </Group>
-          <Text c="var(--body_light)">Pick the tools you need. Everything works beautifully together.</Text>
-        </Stack>
-
-        <Grid gutter={16}>
-          {modules.map((m, idx) => (
-            <Grid.Col key={idx} span={{ base: 12, sm: 6, lg: 4 }} px={5}>
-              <Card withBorder radius="lg" shadow="sm" p={18} className="bg_white">
-                <Group align="flex-start" wrap="nowrap">
+    <Box component="section" className="section-padding ">
+      <Stack gap={8} align="center" ta="center" mb={20}>
+        <Title order={2} fw={700}>
+          Explore Modules
+        </Title>
+        <Text c="var(--body_light)">
+          Pick the tools you need. Everything works beautifully together.
+        </Text>
+      </Stack>
+      <Box pos={'relative'}>
+        <Box className={styles.bg_radical_left}></Box>
+        <Carousel
+          withIndicators={false}
+          height={400}
+          slideSize={{ base: '100%', sm: '50%', lg: '22.3333%' }}
+          slideGap="md"
+          emblaOptions={{
+            loop: true,
+            dragFree: false,
+            align: 'center',
+          }}
+        >
+          {modules.map((m: any, idx: number) => (
+            <Carousel.Slide key={idx}>
+              <Card
+                radius="lg"
+                shadow="sm"
+                p="lg"
+                h={380}
+                withBorder
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  background: m?.color_light,
+                }}
+              >
+                {/* Top Section */}
+                <Stack gap="sm">
                   <ThemeIcon
                     size={48}
                     radius="xl"
-                    variant="gradient"
-                    gradient={{ from: 'var(--primary)', to: 'var(--primary_darker)', deg: 200 }}
+                    variant="filled"
+                    color={m.color}
                   >
-                    <m.icon className="white" size={24} />
+                    {m.icon}
                   </ThemeIcon>
-                  <Stack gap={6}>
-                    <Title order={4}>{m.name}</Title>
-                    <Text c="var(--body_light)" size="sm">{m.desc}</Text>
-                  </Stack>
-                </Group>
+
+                  <Title order={3}>{m.title2}</Title>
+                </Stack>
+
+                {/* Features */}
+                <Stack gap="xs" mt="md">
+                  <Text fw={600}>Key Features</Text>
+                  <List
+                    spacing="xs"
+                    size="sm"
+                    icon={<IconPointFilled size={12} color={'var(--body)'} />}
+                  >
+                    {m.sub_menus.slice(0, 5).map((menu: any, i: number) => (
+                      <List.Item key={i}>{menu.name}</List.Item>
+                    ))}
+                  </List>
+                </Stack>
+
+                <Button variant="filled" size="md" mt={20} fullWidth>
+                  Learn More
+                </Button>
               </Card>
-            </Grid.Col>
+            </Carousel.Slide>
           ))}
-        </Grid>
-      </Container>
+        </Carousel>
+        <Box className={styles.bg_radical_right}></Box>
+      </Box>
     </Box>
   );
 }

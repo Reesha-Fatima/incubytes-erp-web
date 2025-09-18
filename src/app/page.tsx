@@ -1,4 +1,5 @@
 'use client';
+import { Divider } from '@mantine/core';
 import {
   Header,
   HeroBanner,
@@ -17,9 +18,10 @@ export default function Home() {
       <HeroBanner />
       <ModuleTab />
       <ModuleListing />
-      <Testimonials />
-      <FAQ />
       <PricingSection />
+      <Testimonials />
+      <Divider />
+      <FAQ />
       <Footer />
     </>
   );

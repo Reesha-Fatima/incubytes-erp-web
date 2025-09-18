@@ -16,7 +16,7 @@ export default function HeroBanner() {
           <Button size="lg" variant="filled">
             Get Started
           </Button>
-          <Button size="lg" variant="outline">
+          <Button size="lg" variant="light">
             Contact Sales
           </Button>
         </Flex>

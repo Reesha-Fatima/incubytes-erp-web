@@ -9,6 +9,7 @@
   --primary: #5812cb;
   --primary-color: #5812cb;
   // --primary_lightest: #f0f3f9;
+  --primary_bright_lightest: #eee7fa94;
   --primary_lightest: #f9fafb;
   --primary_lighter: #dee3ec;
   --primary_light: #afb8c4;
@@ -107,9 +108,9 @@
 }
 .primary_gradient_text {
   background: linear-gradient(
-    135deg,
-    var(--basecolor2) 0%,
-    var(--basecolor1) 100%
+    200deg,
+    var(--primary) 0%,
+    var(--primary_darker) 100%
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -121,6 +122,13 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
+}
+:where([data-mantine-color-scheme="light"]) .m_cf365364 {
+  background: var(--white) !important;
+}
+:where([data-mantine-color-scheme="light"]) .m_1738fcb2:where([data-active]) {
+  background: var(--primary_bright_lightest) !important;
+  color: var(--primary_darker);
 }
 .primary_gradient {
   background: linear-gradient(
@@ -232,6 +240,9 @@
 }
 .bg_primary {
   background: var(--primary);
+}
+.bg_primary_bright_lightest {
+  background: var(--primary_bright_lightest);
 }
 .brd_primary {
   border: solid 1px var(--primary) !important;

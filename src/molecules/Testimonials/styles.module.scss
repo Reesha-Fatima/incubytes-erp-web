@@ -9,6 +9,7 @@
   }
 }
 
+/* Fade edges */
 .glowLeft,
 .glowRight {
   position: absolute;
@@ -39,75 +40,37 @@
   );
 }
 
+/* Card wrapper for gradient border */
 .cardWrap {
-  background: linear-gradient(200deg, var(--primary), var(--primary_darker));
   padding: 1px;
   border-radius: var(--radius_lg);
 }
 
+/* Testimonial Card */
 .card {
   position: relative;
-  background: var(--white);
+  background: var(--primary_bright_lightest);
   border-radius: var(--radius_lg);
   height: 100%;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, color 0.25s ease;
+  padding: 28px;
+
   backdrop-filter: saturate(120%) blur(2px);
+
 }
 
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 30px rgba(40, 30, 90, 0.12);
-}
-
-.accentBar {
-  height: 4px;
-  width: 60px;
-  border-radius: 10px;
-  background: linear-gradient(200deg, var(--primary), var(--primary_darker));
-}
-
+/* Decorative Quote Mark */
 .quoteMark {
   position: absolute;
   top: 14px;
   right: 18px;
-  font-size: 42px;
+  font-size: 60px;
   line-height: 1;
+  font-weight: 700;
   color: var(--primary_light);
+  pointer-events: none;
 }
 
-.userRow {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.avatarRing {
-  position: relative;
-}
-
-.avatarRing::before {
-  content: '';
-  position: absolute;
-  inset: -3px;
-  border-radius: 100%;
-  background: linear-gradient(200deg, var(--primary), var(--primary_darker));
-  z-index: -1;
-}
-
-.slide {
-  padding: 6px 8px;
-}
-
-.testimonialItem {
-  display: flex;
-  justify-content: center;
-}
-
-.cardOuter {
-  position: relative;
-  padding-top: 0;
-}
-
+/* Avatar Styling */
 .avatarInline {
   margin-top: 4px;
 }
@@ -116,59 +79,79 @@
   position: relative;
   display: inline-grid;
   place-items: center;
-  padding: 8px;
+  padding: 4px;
   border-radius: 50%;
-  background: var(--white);
+  
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--primary_lightest), transparent 70%);
+    z-index: -1;
+  }
 }
 
-.avatarRing::before {
-  content: '';
-  position: absolute;
-  inset: -6px;
-  border-radius: 50%;
-  background: radial-gradient(circle, var(--primary_lightest), transparent 70%);
-  z-index: -1;
-}
-
+/* Text Styles */
 .name {
   color: var(--heading, #000);
+  font-weight: 700;
 }
 
 .role {
   color: var(--body_light);
+  font-size: 0.9rem;
 }
 
 .quoteText {
   color: var(--body, #333);
+  font-style: italic;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* Accent Bar under quote */
+.accentBar {
+  margin-top: 12px;
+  height: 4px;
+  width: 60px;
+  border-radius: 10px;
+  background: linear-gradient(200deg, var(--primary), var(--primary_darker));
 }
 
 /* Center slide highlight */
-:global(.slick-center) .cardOuter .card {
+:global(.slick-center) .card {
   background: var(--primary);
-  box-shadow: 0 16px 40px rgba(40, 30, 90, 0.22);
+  transform: scale(1.05);
+  box-shadow: 0 20px 50px rgba(40, 30, 90, 0.28);
 }
-:global(.slick-center) .cardOuter .name,
-:global(.slick-center) .cardOuter .role,
-:global(.slick-center) .cardOuter .quoteText {
+:global(.slick-center) .name,
+:global(.slick-center) .role,
+:global(.slick-center) .quoteText {
   color: var(--white);
 }
-:global(.slick-center) .cardOuter .rating :global(.mantine-Rating-symbolFilled) {
+:global(.slick-center) .rating :global(.mantine-Rating-symbolFilled) {
   color: var(--white);
 }
-:global(.slick-center) .cardOuter .rating :global(.mantine-Rating-symbolEmpty) {
+:global(.slick-center) .rating :global(.mantine-Rating-symbolEmpty) {
   color: rgba(255, 255, 255, 0.6);
 }
 
+/* Slider dots styling */
 .sliderRoot {
   position: relative;
+
   :global(.slick-dots) {
     bottom: -36px;
+
     li button:before {
       font-size: 10px;
       color: var(--primary_lighter);
       opacity: 0.6;
     }
+
     li.slick-active button:before {
       color: var(--primary);
       opacity: 1;

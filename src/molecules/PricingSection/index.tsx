@@ -46,7 +46,10 @@ export default function PricingSection() {
   }
 
   return (
-    <Box component="section" className="section-padding">
+    <Box
+      component="section"
+      className="section-padding bg_primary_bright_lightest"
+    >
       <Container size="md">
         <Stack gap={8} align="center" ta="center">
           <Badge size="lg" radius="sm">
@@ -59,6 +62,7 @@ export default function PricingSection() {
             <SegmentedControl
               size="md"
               radius="xl"
+              className="segment_pricing"
               value={billingCycle}
               onChange={(value: any) => setBillingCycle(value)}
               data={[
@@ -82,8 +86,11 @@ export default function PricingSection() {
             const isPopular = plan.type === 'ENTERPRISE';
 
             return (
-              <Grid.Col key={plan?.id ?? `${plan?.type ?? 'plan'}-${idx}`}
-                        span={{ base: 12, lg: 4 }} px={5}>
+              <Grid.Col
+                key={plan?.id ?? `${plan?.type ?? 'plan'}-${idx}`}
+                span={{ base: 12, lg: 4 }}
+                px={5}
+              >
                 <PricingCard
                   plan={plan}
                   isPopular={isPopular}

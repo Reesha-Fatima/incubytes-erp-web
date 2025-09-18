@@ -1,0 +1,29 @@
+.bg_radical_left,
+.bg_radical_right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 120px; // fade ka spread
+  z-index: 2;
+  pointer-events: none;
+}
+
+.bg_radical_left {
+  left: 0;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0.8) 20%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.bg_radical_right {
+  right: 0;
+  background: linear-gradient(
+    to left,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0.8) 20%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
