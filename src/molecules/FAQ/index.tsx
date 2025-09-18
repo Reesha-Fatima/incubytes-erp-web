@@ -27,15 +27,15 @@ export default function FAQ() {
   return (
     <Box component="section" className={`section-padding ${styles.faqSection}`}>
       <Container size="md">
-        <Stack gap={8} align="center" ta="center" mb={20}>
+        <Stack gap={8} align="center" ta="center" mb={20} className={styles.sectionHeader}>
           <Badge size="lg" radius="sm">FAQ</Badge>
           <Title order={2} fw={700}>Frequently asked questions</Title>
-          <Text c="var(--body_light)">Everything you need to know to get started</Text>
+          <Text className={styles.mutedText}>Everything you need to know to get started</Text>
         </Stack>
 
         <div className={styles.faqWrap}>
           <Card withBorder radius="lg" className={styles.card}>
-            <Accordion radius="md" variant="default">
+            <Accordion radius="md" variant="default" className={styles.accordionRoot}>
           {faqs.map((f, i) => (
             <Accordion.Item key={i} value={`faq-${i}`}>
               <Accordion.Control className={styles.control}>{f.q}</Accordion.Control>

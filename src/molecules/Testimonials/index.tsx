@@ -47,48 +47,45 @@ export default function Testimonials() {
     infinite: true,
     speed: 500,
     slidesToShow: 3,
+    centerMode: true,
+    centerPadding: '0px',
     slidesToScroll: 1,
+    swipeToSlide: true,
+    focusOnSelect: true,
     responsive: [
-      { breakpoint: 1200, settings: { slidesToShow: 2 } },
-      { breakpoint: 768, settings: { slidesToShow: 1 } },
+      { breakpoint: 1200, settings: { slidesToShow: 3, centerMode: false } },
+      { breakpoint: 992, settings: { slidesToShow: 2, centerMode: false } },
+      { breakpoint: 768, settings: { slidesToShow: 1, centerMode: false } },
     ],
   } as const;
 
   return (
     <Box component="section" className={`section-padding ${styles.testimonialsSection}`}>
       <Container size="lg">
-        <Stack gap={8} align="center" ta="center" mb={20}>
+        <Stack gap={8} align="center" ta="center" mb={20} className={styles.sectionHeader}>
           <Badge size="lg" radius="sm">Testimonials</Badge>
           <Title order={2} fw={700}>Loved by modern teams</Title>
-          <Text c="var(--body_light)">Real stories from teams growing faster with our platform</Text>
+          <Text className={styles.mutedText}>Real stories from teams growing faster with our platform</Text>
         </Stack>
         <Box className={styles.glowLeft} />
         <Box className={styles.glowRight} />
 
-        <div className="testimonial_Slider">
-          <Slider {...settings}>
+        <div className={`testimonial_Slider ${styles.sliderRoot}`}>
+          <Slider {...settings} aria-label="Customer testimonials slider">
             {testimonials.map((t, i) => (
-              <div key={`${t.name}-${i}`} className={styles.slide}>
-                <div className={styles.cardWrap}>
-                  <Card radius="lg" shadow="sm" p={22} className={`${styles.card} bg_white`}>
-                    <div className={styles.quoteMark}>“”</div>
-                    <Stack gap={14}>
-                      <Group justify="space-between">
-                        <Rating readOnly defaultValue={t.rating} />
-                        <Badge size="sm" radius="sm" variant="light">Verified</Badge>
-                      </Group>
-                      <Box className={styles.accentBar} />
-                      <Text size="lg">{`“${t.quote}”`}</Text>
-                      <Divider className="brd_primary_lightx2" />
-                      <div className={styles.userRow}>
-                        <div className={styles.avatarRing}>
-                          <Avatar radius="xl" variant="filled" className="bg_primary white">{t.initials}</Avatar>
-                        </div>
-                        <Stack gap={0}>
-                          <Text fw={600}>{t.name}</Text>
-                          <Text c="var(--body_light)" size="sm">{t.role}</Text>
-                        </Stack>
+              <div key={`${t.name}-${i}`} className={`${styles.slide} ${styles.testimonialItem}`}>
+                <div className={styles.cardOuter}>
+                  <Card radius="lg" shadow="sm" p={28} className={styles.card}>
+                    <Stack gap={12} align="center">
+                      <div className={styles.avatarInline}>
+                        <span className={styles.avatarRing}>
+                          <Avatar radius="xl" variant="filled" className="bg_primary white" size="lg">{t.initials}</Avatar>
+                        </span>
                       </div>
+                      <Rating readOnly defaultValue={t.rating} className={styles.rating} />
+                      <Text fw={700} ta="center" className={styles.name}>{t.name}</Text>
+                      <Text size="sm" ta="center" className={styles.role}>{t.role}</Text>
+                      <Text ta="center" className={styles.quoteText}>{`“${t.quote}”`}</Text>
                     </Stack>
                   </Card>
                 </div>
