@@ -2,6 +2,12 @@
   position: relative;
 }
 
+.sectionHeader {
+  .mutedText {
+    color: var(--body_light);
+  }
+}
+
 .faqWrap {
   background: linear-gradient(200deg, var(--primary), var(--primary_darker));
   padding: 1px;
@@ -13,8 +19,19 @@
   border-radius: var(--radius_lg);
 }
 
+.accordionRoot {
+  :global(.mantine-Accordion-item) {
+    border-radius: var(--radius_md);
+    overflow: hidden;
+  }
+  :global(.mantine-Accordion-item[data-active="true"]) .control {
+    background: var(--primary_lightest);
+  }
+}
+
 .control {
   transition: background 0.2s ease, transform 0.2s ease;
+  font-weight: 600;
 }
 
 .control:hover {

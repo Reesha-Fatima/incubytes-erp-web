@@ -3,6 +3,12 @@
   overflow: hidden;
 }
 
+.sectionHeader {
+  .mutedText {
+    color: var(--body_light);
+  }
+}
+
 .glowLeft,
 .glowRight {
   position: absolute;
@@ -44,7 +50,7 @@
   background: var(--white);
   border-radius: var(--radius_lg);
   height: 100%;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, color 0.25s ease;
   backdrop-filter: saturate(120%) blur(2px);
 }
 
@@ -90,4 +96,82 @@
 
 .slide {
   padding: 6px 8px;
+}
+
+.testimonialItem {
+  display: flex;
+  justify-content: center;
+}
+
+.cardOuter {
+  position: relative;
+  padding-top: 0;
+}
+
+.avatarInline {
+  margin-top: 4px;
+}
+
+.avatarRing {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  padding: 8px;
+  border-radius: 50%;
+  background: var(--white);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.avatarRing::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--primary_lightest), transparent 70%);
+  z-index: -1;
+}
+
+.name {
+  color: var(--heading, #000);
+}
+
+.role {
+  color: var(--body_light);
+}
+
+.quoteText {
+  color: var(--body, #333);
+}
+
+/* Center slide highlight */
+:global(.slick-center) .cardOuter .card {
+  background: var(--primary);
+  box-shadow: 0 16px 40px rgba(40, 30, 90, 0.22);
+}
+:global(.slick-center) .cardOuter .name,
+:global(.slick-center) .cardOuter .role,
+:global(.slick-center) .cardOuter .quoteText {
+  color: var(--white);
+}
+:global(.slick-center) .cardOuter .rating :global(.mantine-Rating-symbolFilled) {
+  color: var(--white);
+}
+:global(.slick-center) .cardOuter .rating :global(.mantine-Rating-symbolEmpty) {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.sliderRoot {
+  position: relative;
+  :global(.slick-dots) {
+    bottom: -36px;
+    li button:before {
+      font-size: 10px;
+      color: var(--primary_lighter);
+      opacity: 0.6;
+    }
+    li.slick-active button:before {
+      color: var(--primary);
+      opacity: 1;
+    }
+  }
 }
