@@ -50,6 +50,8 @@ export default function Testimonials() {
     centerMode: true,
     centerPadding: '0px',
     slidesToScroll: 1,
+    swipeToSlide: true,
+    focusOnSelect: true,
     responsive: [
       { breakpoint: 1200, settings: { slidesToShow: 3, centerMode: false } },
       { breakpoint: 992, settings: { slidesToShow: 2, centerMode: false } },
