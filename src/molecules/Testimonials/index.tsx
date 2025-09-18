@@ -57,16 +57,16 @@ export default function Testimonials() {
   return (
     <Box component="section" className={`section-padding ${styles.testimonialsSection}`}>
       <Container size="lg">
-        <Stack gap={8} align="center" ta="center" mb={20}>
+        <Stack gap={8} align="center" ta="center" mb={20} className={styles.sectionHeader}>
           <Badge size="lg" radius="sm">Testimonials</Badge>
           <Title order={2} fw={700}>Loved by modern teams</Title>
-          <Text c="var(--body_light)">Real stories from teams growing faster with our platform</Text>
+          <Text className={styles.mutedText}>Real stories from teams growing faster with our platform</Text>
         </Stack>
         <Box className={styles.glowLeft} />
         <Box className={styles.glowRight} />
 
-        <div className="testimonial_Slider">
-          <Slider {...settings}>
+        <div className={`testimonial_Slider ${styles.sliderRoot}`}>
+          <Slider {...settings} aria-label="Customer testimonials slider">
             {testimonials.map((t, i) => (
               <div key={`${t.name}-${i}`} className={styles.slide}>
                 <div className={styles.cardWrap}>
