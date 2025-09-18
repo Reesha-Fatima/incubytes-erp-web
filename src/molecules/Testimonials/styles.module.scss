@@ -1,0 +1,85 @@
+.testimonialsSection {
+  position: relative;
+  overflow: hidden;
+}
+
+.glowLeft,
+.glowRight {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 220px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.glowLeft {
+  left: 0;
+  background: radial-gradient(
+    circle at left center,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(255, 255, 255, 0.4) 40%,
+    transparent 100%
+  );
+}
+
+.glowRight {
+  right: 0;
+  background: radial-gradient(
+    circle at right center,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(255, 255, 255, 0.8) 40%,
+    transparent 100%
+  );
+}
+
+.cardWrap {
+  background: linear-gradient(200deg, var(--primary), var(--primary_darker));
+  padding: 1px;
+  border-radius: var(--radius_lg);
+}
+
+.card {
+  position: relative;
+  background: var(--white);
+  border-radius: var(--radius_lg);
+  height: 100%;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(40, 30, 90, 0.12);
+}
+
+.quoteMark {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  font-size: 42px;
+  line-height: 1;
+  color: var(--primary_light);
+}
+
+.userRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatarRing {
+  position: relative;
+}
+
+.avatarRing::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 100%;
+  background: linear-gradient(200deg, var(--primary), var(--primary_darker));
+  z-index: -1;
+}
+
+.slide {
+  padding: 6px 8px;
+}
