@@ -54,7 +54,7 @@ export default function PricingCard({ plan, isPopular, billingCycle }: Props) {
               <Stack gap={2} align="center">
                 {plan.discount > 0 && (
                   <Text c="dimmed" td="line-through">
-                    {billingCycle === 'monthly'
+                    {billingCycle === 'MONTHLY'
                       ? `$${(
                           plan.monthly_price /
                           (1 - plan.discount / 100)
