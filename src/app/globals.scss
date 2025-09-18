@@ -459,7 +459,8 @@
 }
 .testimonial_Slider {
   .slick-list .slick-slide:not(.slick-active) {
-    opacity: 0 !important;
+    opacity: 0.55 !important;
+    transition: opacity 0.3s ease;
   }
   .slick-prev,
   .slick-next {
@@ -469,7 +470,7 @@
     z-index: 10;
     border: solid 1px var(--primary);
     background: transparent;
-    border-radius: 50%; /* Circular shape */
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
