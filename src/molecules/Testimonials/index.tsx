@@ -75,7 +75,7 @@ export default function Testimonials() {
             {testimonials.map((t, i) => (
               <div key={`${t.name}-${i}`} className={`${styles.slide} ${styles.testimonialItem}`}>
                 <div className={styles.cardOuter}>
-                  <Card radius="lg" shadow="sm" p={28} className={`${styles.card} bg_white`}>
+                  <Card radius="lg" shadow="sm" p={28} className={styles.card}>
                     <Stack gap={12} align="center">
                       <div className={styles.avatarInline}>
                         <span className={styles.avatarRing}>
