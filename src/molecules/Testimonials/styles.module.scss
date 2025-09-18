@@ -105,27 +105,27 @@
 
 .cardOuter {
   position: relative;
-  padding-top: 42px;
+  padding-top: 0;
 }
 
-.avatarBadge {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 84px;
-  height: 84px;
+.avatarInline {
+  margin-top: 4px;
+}
+
+.avatarRing {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  padding: 8px;
   border-radius: 50%;
   background: var(--white);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-  display: grid;
-  place-items: center;
 }
 
-.avatarBadge::before {
+.avatarRing::before {
   content: '';
   position: absolute;
-  inset: -8px;
+  inset: -6px;
   border-radius: 50%;
   background: radial-gradient(circle, var(--primary_lightest), transparent 70%);
   z-index: -1;
