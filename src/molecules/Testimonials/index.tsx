@@ -47,10 +47,13 @@ export default function Testimonials() {
     infinite: true,
     speed: 500,
     slidesToShow: 3,
+    centerMode: true,
+    centerPadding: '0px',
     slidesToScroll: 1,
     responsive: [
-      { breakpoint: 1200, settings: { slidesToShow: 2 } },
-      { breakpoint: 768, settings: { slidesToShow: 1 } },
+      { breakpoint: 1200, settings: { slidesToShow: 3, centerMode: false } },
+      { breakpoint: 992, settings: { slidesToShow: 2, centerMode: false } },
+      { breakpoint: 768, settings: { slidesToShow: 1, centerMode: false } },
     ],
   } as const;
 
@@ -68,27 +71,17 @@ export default function Testimonials() {
         <div className={`testimonial_Slider ${styles.sliderRoot}`}>
           <Slider {...settings} aria-label="Customer testimonials slider">
             {testimonials.map((t, i) => (
-              <div key={`${t.name}-${i}`} className={styles.slide}>
-                <div className={styles.cardWrap}>
-                  <Card radius="lg" shadow="sm" p={22} className={`${styles.card} bg_white`}>
-                    <div className={styles.quoteMark}>“”</div>
-                    <Stack gap={14}>
-                      <Group justify="space-between">
-                        <Rating readOnly defaultValue={t.rating} />
-                        <Badge size="sm" radius="sm" variant="light">Verified</Badge>
-                      </Group>
-                      <Box className={styles.accentBar} />
-                      <Text size="lg">{`“${t.quote}”`}</Text>
-                      <Divider className="brd_primary_lightx2" />
-                      <div className={styles.userRow}>
-                        <div className={styles.avatarRing}>
-                          <Avatar radius="xl" variant="filled" className="bg_primary white">{t.initials}</Avatar>
-                        </div>
-                        <Stack gap={0}>
-                          <Text fw={600}>{t.name}</Text>
-                          <Text c="var(--body_light)" size="sm">{t.role}</Text>
-                        </Stack>
-                      </div>
+              <div key={`${t.name}-${i}`} className={`${styles.slide} ${styles.testimonialItem}`}>
+                <div className={styles.cardOuter}>
+                  <div className={styles.avatarBadge}>
+                    <Avatar radius="xl" variant="filled" className="bg_primary white" size="lg">{t.initials}</Avatar>
+                  </div>
+                  <Card radius="lg" shadow="sm" p={28} className={`${styles.card} bg_white`}>
+                    <Stack gap={10} align="center">
+                      <Rating readOnly defaultValue={t.rating} className={styles.rating} />
+                      <Text fw={700} ta="center" className={styles.name}>{t.name}</Text>
+                      <Text size="sm" ta="center" className={styles.role}>{t.role}</Text>
+                      <Text ta="center" className={styles.quoteText}>{`“${t.quote}”`}</Text>
                     </Stack>
                   </Card>
                 </div>
