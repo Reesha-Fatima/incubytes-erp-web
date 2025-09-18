@@ -82,7 +82,8 @@ export default function PricingSection() {
             const isPopular = plan.type === 'ENTERPRISE';
 
             return (
-              <Grid.Col span={{ base: 12, lg: 4 }} px={5}>
+              <Grid.Col key={plan?.id ?? `${plan?.type ?? 'plan'}-${idx}`}
+                        span={{ base: 12, lg: 4 }} px={5}>
                 <PricingCard
                   plan={plan}
                   isPopular={isPopular}

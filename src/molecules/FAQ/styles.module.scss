@@ -1,0 +1,26 @@
+.faqSection {
+  position: relative;
+}
+
+.faqWrap {
+  background: linear-gradient(200deg, var(--primary), var(--primary_darker));
+  padding: 1px;
+  border-radius: var(--radius_lg);
+}
+
+.card {
+  background: var(--white);
+  border-radius: var(--radius_lg);
+}
+
+.control {
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.control:hover {
+  transform: translateY(-1px);
+}
+
+.panel {
+  border-top: 1px solid var(--primary_lighter);
+}

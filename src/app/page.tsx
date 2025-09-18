@@ -5,6 +5,9 @@ import {
   ModuleListing,
   ModuleTab,
   PricingSection,
+  Testimonials,
+  FAQ,
+  Footer,
 } from '@molecules';
 import React from 'react';
 export default function Home() {
@@ -13,8 +16,11 @@ export default function Home() {
       <Header />
       <HeroBanner />
       <ModuleTab />
-      {/* <ModuleListing /> */}
+      <ModuleListing />
+      <Testimonials />
+      <FAQ />
       <PricingSection />
+      <Footer />
     </>
   );
 }
