@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Slider from 'react-slick';
-import { Box, Card, Container, Group, Stack, Text, Title, Avatar, Rating, Badge } from '@mantine/core';
+import { Box, Card, Container, Group, Stack, Text, Title, Avatar, Rating, Badge, Divider } from '@mantine/core';
 import styles from './styles.module.scss';
 
 const testimonials = [
@@ -43,7 +43,7 @@ const testimonials = [
 export default function Testimonials() {
   const settings = {
     dots: true,
-    arrows: true,
+    arrows: false,
     infinite: true,
     speed: 500,
     slidesToShow: 3,
@@ -73,8 +73,13 @@ export default function Testimonials() {
                   <Card radius="lg" shadow="sm" p={22} className={`${styles.card} bg_white`}>
                     <div className={styles.quoteMark}>“”</div>
                     <Stack gap={14}>
-                      <Rating readOnly defaultValue={t.rating} />
+                      <Group justify="space-between">
+                        <Rating readOnly defaultValue={t.rating} />
+                        <Badge size="sm" radius="sm" variant="light">Verified</Badge>
+                      </Group>
+                      <Box className={styles.accentBar} />
                       <Text size="lg">{`“${t.quote}”`}</Text>
+                      <Divider className="brd_primary_lightx2" />
                       <div className={styles.userRow}>
                         <div className={styles.avatarRing}>
                           <Avatar radius="xl" variant="filled" className="bg_primary white">{t.initials}</Avatar>
