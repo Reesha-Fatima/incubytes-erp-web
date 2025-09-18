@@ -3,6 +3,12 @@
   overflow: hidden;
 }
 
+.sectionHeader {
+  .mutedText {
+    color: var(--body_light);
+  }
+}
+
 .glowLeft,
 .glowRight {
   position: absolute;
@@ -90,4 +96,20 @@
 
 .slide {
   padding: 6px 8px;
+}
+
+.sliderRoot {
+  position: relative;
+  :global(.slick-dots) {
+    bottom: -36px;
+    li button:before {
+      font-size: 10px;
+      color: var(--primary_lighter);
+      opacity: 0.6;
+    }
+    li.slick-active button:before {
+      color: var(--primary);
+      opacity: 1;
+    }
+  }
 }
