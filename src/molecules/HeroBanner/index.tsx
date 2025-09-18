@@ -6,7 +6,7 @@ export default function HeroBanner() {
     <Box component="section" className="section-padding">
       <Container size={'sm'}>
         <Title order={1} ta={'center'} mb={10}>
-          6 Enterprise Resource Management
+          Enterprise Resource Management
         </Title>
         <Text ta={'center'} size="xl">
           Manage all your business activities on one platform with customizable

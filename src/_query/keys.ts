@@ -1,5 +1,5 @@
 export const queryKeys = {
-  getFormTestList: 'getFormTestList',
+  getSubscriptionPlans: 'getSubscriptionPlans',
 };
 
 export type QueryKeys = typeof queryKeys;

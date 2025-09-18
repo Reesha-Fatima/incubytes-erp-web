@@ -1,177 +1,102 @@
-"use client";
+'use client';
 
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState } from 'react';
 import {
   Badge,
   Box,
   Button,
   Card,
   Container,
+  Divider,
   Flex,
   Grid,
   Group,
   List,
+  Loader,
   rem,
   SegmentedControl,
   Stack,
   Text,
   ThemeIcon,
-} from "@mantine/core";
-import { IconCheck, IconStar } from "@tabler/icons-react";
-import styles from "./styles.module.scss";
+  Title,
+} from '@mantine/core';
+import { IconCheck, IconStar } from '@tabler/icons-react';
+import styles from './styles.module.scss';
+import { useQuery } from '@tanstack/react-query';
+import { queryKeys } from '@query';
+import { getSubscriptionPlans } from '@services';
+import { PricingCard } from '@organisms';
 
-type BillingCycle = "monthly" | "yearly";
-
-const plans = [
-  {
-    key: "starter",
-    name: "Free",
-    tagline: "Free plan for all users.",
-    monthly: 0,
-    yearly: 0,
-    cta: "Get Started",
-    featured: false,
-    bgClass: "bgSoft1",
-    features: [
-      "2 Workspaces",
-      "10 collaborators",
-      "Unlimited data",
-      "Unified Analytics",
-    ],
-  },
-  {
-    key: "pro",
-    name: "Pro",
-    tagline: "Ideal for small businesses.",
-    monthly: 15,
-    yearly: 150,
-    cta: "Get Started",
-    featured: true,
-    bgClass: "bgSoft2",
-    features: [
-      "Unlimited workspaces",
-      "Unlimited collaboration",
-      "15 GB data storage",
-      "Unified Analytics",
-      "Mobile app access",
-    ],
-  },
-  {
-    key: "enterprise",
-    name: "Business",
-    tagline: "Works best for enterprise companies.",
-    monthly: 25,
-    yearly: 250,
-    cta: "Get Started",
-    featured: false,
-    bgClass: "bgSoft3",
-    features: [
-      "Unlimited workspaces",
-      "Unlimited collaboration",
-      "15 GB data storage",
-      "Unified Analytics",
-      "Mobile app access",
-    ],
-  },
-] as const;
+type TypeBillingCycle = 'MONTHLY' | 'YEARLY';
 
 export default function PricingSection() {
-  const [billing, setBilling] = useState<BillingCycle>("monthly");
+  const [billingCycle, setBillingCycle] = useState<TypeBillingCycle>('MONTHLY');
+  const { data: plansList, isPending: loadingList } = useQuery<any>({
+    queryKey: [queryKeys.getSubscriptionPlans],
+    queryFn: () => getSubscriptionPlans(),
+    select: (res) => res?.data || [],
+  });
 
-  const subtitle = useMemo(
-    () =>
-      billing === "yearly"
-        ? "Save 2 months with yearly billing"
-        : "Switch to yearly and save",
-    [billing]
-  );
-
-  const renderPrice = (p: typeof plans[number]) =>
-    billing === "monthly" ? p.monthly : p.yearly;
+  if (loadingList) {
+    return (
+      <Group justify="center" mt="xl">
+        <Loader size="lg" />
+      </Group>
+    );
+  }
 
   return (
-    <Box component="section" className={styles.pricingSection}>
+    <Box component="section" className="section-padding">
       <Container size="md">
-        <Stack gap={8} align="center" ta="center" className={styles.headerWrap}>
-          <Badge size="lg" radius="sm" className={styles.sectionBadge}>
+        <Stack gap={8} align="center" ta="center">
+          <Badge size="lg" radius="sm">
             Pricing
           </Badge>
-          <Text component="h2" fw={700} className={styles.sectionTitle}>
-            Simple, transparent plans
-          </Text>
-          <Text className={styles.sectionSubtitle}>{subtitle}</Text>
-
-          <SegmentedControl
-            value={billing}
-            onChange={(v) => setBilling(v as BillingCycle)}
-            data={[
-              { label: "Monthly", value: "monthly" },
-              { label: "Yearly", value: "yearly" },
-            ]}
-            radius="xl"
-            className={styles.billingToggle}
-          />
+          <Title order={2} fw={700}>
+            Upgrade to unleash everything
+          </Title>
+          <Group justify="center">
+            <SegmentedControl
+              size="md"
+              radius="xl"
+              value={billingCycle}
+              onChange={(value: any) => setBillingCycle(value)}
+              data={[
+                { label: 'Monthly', value: 'MONTHLY' },
+                { label: 'Yearly', value: 'YEARLY' },
+              ]}
+            />
+          </Group>
         </Stack>
 
-        <Grid mt={30} gutter={20} align="stretch">
-          {plans.map((plan) => (
-            <Grid.Col key={plan.key} span={{ base: 12, sm: 6, md: 4 }}>
-              <Card
-                withBorder={false}
-                radius="lg"
-                shadow={plan.featured ? "md" : "sm"}
-                className={`${styles.planCard} ${plan.featured ? styles.planCardFeatured : ""}`}
-              >
-                {plan.featured && (
-                  <Group gap={6} className={styles.featuredBadge}>
-                    <IconStar size={16} />
-                    <Text fw={600} fz={12}>Most popular</Text>
-                  </Group>
-                )}
+        <Grid align="center">
+          {[
+            ...plansList
+              .filter((plan: any) => plan.type !== 'ENTERPRISE')
+              .slice(0, 1),
+            ...plansList.filter((plan: any) => plan.type === 'ENTERPRISE'),
+            ...plansList
+              .filter((plan: any) => plan.type !== 'ENTERPRISE')
+              .slice(1),
+          ].map((plan: any, idx: number) => {
+            const isPopular = plan.type === 'ENTERPRISE';
 
-                <Stack gap={6}>
-                  <Text fw={700} className={styles.planName}>
-                    {plan.name}
-                  </Text>
-                  <Text className={styles.planTagline}>{plan.tagline}</Text>
-                </Stack>
-
-                <Flex align="baseline" gap={6} mt={14} className={styles.priceRow}>
-                  <Text className={styles.currency}>$</Text>
-                  <Text className={styles.price}>{renderPrice(plan)}</Text>
-                  <Text className={styles.cycle}>/{billing === "monthly" ? "month" : "year"}</Text>
-                </Flex>
-
-                <Button
-                  fullWidth
-                  mt={16}
-                  size="md"
-                  variant="default"
-                  className={styles.ctaButton}
-                >
-                  {plan.cta}
-                </Button>
-
-                <List mt={18} spacing={10} className={styles.featureList}
-                  icon={
-                    <ThemeIcon size={22} radius="xl" className={styles.checkIcon}>
-                      <IconCheck size={14} />
-                    </ThemeIcon>
-                  }
-                >
-                  {plan.features.map((f, idx) => (
-                    <List.Item key={idx} className={styles.featureItem}>
-                      {f}
-                    </List.Item>
-                  ))}
-                </List>
-              </Card>
-            </Grid.Col>
-          ))}
+            return (
+              <Grid.Col span={{ base: 12, lg: 4 }} px={5}>
+                <PricingCard
+                  plan={plan}
+                  isPopular={isPopular}
+                  billingCycle={billingCycle}
+                />
+              </Grid.Col>
+            );
+          })}
         </Grid>
 
-        <Text ta="center" mt={20} className={styles.noteText}>
-          No credit card needed. Unlimited time on Free plan.
+        <Text ta={'center'} my={10}>
+          No credit card needed  {' '}
+          <span className="primary animated-icon">✦</span> Unlimited time on
+          Free plan
         </Text>
       </Container>
     </Box>

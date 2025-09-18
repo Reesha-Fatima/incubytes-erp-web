@@ -77,6 +77,10 @@
   border: solid 1px var(--error);
 }
 
+.dark_divider_color{
+  border-color: #42207b !important;
+}
+
 @keyframes pulse {
   0% {
     transform: translate(-50%, -50%) scale(1);
@@ -120,10 +124,10 @@
 }
 .primary_gradient {
   background: linear-gradient(
-    135deg,
-    var(--basecolor2) 0%,
-    var(--basecolor1) 100%
-  );
+  200deg,
+  var(--primary),
+  var(--primary_darker)
+);
 }
 
 

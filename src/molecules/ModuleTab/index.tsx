@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState } from 'react';
+import { images } from '@assets';
+import { Carousel } from '@mantine/carousel';
 import {
   ActionIcon,
   Box,
@@ -10,8 +11,6 @@ import {
   Image,
   Text,
 } from '@mantine/core';
-import { Carousel } from '@mantine/carousel';
-import styles from './styles.module.scss';
 import {
   IconBuildingStore,
   IconChartLine,
@@ -20,13 +19,13 @@ import {
   IconFile,
   IconFileInvoice,
   IconLayoutKanban,
-  IconPresentation,
   IconShoppingCart,
   IconSpeakerphone,
   IconTicket,
   IconUsersGroup,
 } from '@tabler/icons-react';
-import { images } from '@assets';
+import { useState } from 'react';
+import styles from './styles.module.scss';
 
 export default function ModuleTab() {
   const [activeModule, setActiveModule] = useState('Project');
@@ -72,13 +71,26 @@ export default function ModuleTab() {
                 <Card p={0} withBorder shadow="sm" radius="lg">
                   <ActionIcon
                     size={item?.name === activeModule ? 85 : 70}
-                    variant={item?.name === activeModule ? 'filled' : 'white'}
+                    variant={item?.name === activeModule ? 'gradient' : 'white'}
+                    gradient={{
+                      from: 'var(--primary)',
+                      to: 'var(--primary_darker)',
+                      deg: 200,
+                    }}
+                    color={
+                      item?.name === activeModule ? 'var(--primary_darker)' : ''
+                    }
                     onClick={() => handleSelect(item.name, i)}
                     className={
                       item?.name === activeModule ? styles.activeTab : ''
                     }
                   >
-                    <item.icon size={30} />
+                    <item.icon
+                      size={30}
+                      className={
+                        item?.name === activeModule ? 'white' : 'primary_darker'
+                      }
+                    />
                   </ActionIcon>
                 </Card>
                 <Text mt={5}>{item.name}</Text>

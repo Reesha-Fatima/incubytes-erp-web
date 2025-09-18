@@ -1,1 +1,1 @@
-export { default as WomenExclusiveReviewForm } from './WomenExclusive';
+export { default as PricingCard } from './PricingCard';
